@@ -8,6 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+
+      
+
         /* =========================
          * Base / Background Colors
          * ========================= */
@@ -47,7 +50,9 @@ module.exports = {
         success: "#10B981", // green-500
         error: "#EF4444",   // red-500
         warning: "#F97316", // orange-500
-        info: "#7C3AED",
+        info: "#7C3AED",   // purple-600
+        active: "#7CC3AED",     // brand purple
+        inactive: "#9CA3AF",   // gray-400
 
         /* =========================
          * Standard Tailwind Colors (extended)
