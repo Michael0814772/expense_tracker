@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/colors";
 import { getCategoryById } from "@/utils/getCategoryById";
 import { Image, Text, View } from "react-native";
 
@@ -18,7 +19,15 @@ export function TransactionItem({
   const category = getCategoryById(categoryId);
 
   return (
-    <View className="flex-row items-center justify-between py-4 mb-4">
+    <View
+      className="flex-row items-center justify-between py-4 mb-4"
+      style={{
+        borderBottomWidth: 3,
+        borderBottomColor: COLORS.gray[200],
+        paddingBottom: 12,
+        paddingTop: 12,
+      }}
+    >
       {/* Left side */}
       <View className="flex-row items-center">
         {/* Icon (text-based) */}
@@ -39,16 +48,20 @@ export function TransactionItem({
 
         {/* Details */}
         <View className="ml-3">
-          <Text className="font-semibold text-xl" style={{ marginBottom: 3 }}>
+          <Text className="font-semibold text-sm" style={{ marginBottom: 3 }}>
             {reason}
           </Text>
-          <Text style={{ color: "#888" }}>{dateTime}</Text>
+          <Text style={{ color: "#888", fontSize: 12 }}>{dateTime}</Text>
         </View>
       </View>
 
       {/* Amount */}
       <Text
-        style={{ fontWeight: "600", color: isIncome ? "#16a34a" : "#ef4444" }}
+        style={{
+          fontWeight: "600",
+          color: isIncome ? "#16a34a" : "#ef4444",
+          fontSize: 12,
+        }}
       >
         {isIncome ? "+" : "-"}₦{Math.abs(amount).toLocaleString()}
       </Text>

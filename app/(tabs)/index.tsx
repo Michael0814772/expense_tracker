@@ -1,3 +1,4 @@
+import Advertisement from "@/components/advert/Advertisement";
 import { BalanceAmount } from "@/components/card/BalanceAmount";
 import { BalanceCard } from "@/components/card/BalanceCard";
 import { BalanceHeader } from "@/components/card/BalanceHeader";
@@ -14,7 +15,7 @@ export default function Index() {
   return (
     <SafeAreaView>
       <View className="px-5">
-        <View className="flex-row justify-between items-center mb-16">
+        <View className="flex-row justify-between items-center mb-12">
           <GridIcon />
           {/* Home content */}
           <Text className="text-2xl font-extrabold">Home</Text>
@@ -28,6 +29,8 @@ export default function Index() {
           <BalanceStatsRow income="$2,350.00" expenses="$950.00" />
         </BalanceCard>
 
+        <Advertisement />
+
         <View
           style={{
             marginTop: 32,
@@ -37,14 +40,16 @@ export default function Index() {
             alignItems: "center",
           }}
         >
-          <Text className="text-2xl font-medium">Transactions</Text>
+          <Text className="text-lg font-medium">Transactions</Text>
           <Pressable
-            onPress={() => router.push("/sellAllTransactions")}
+            onPress={() => router.push("/transactions")}
             style={({ pressed }) => ({
               opacity: pressed ? 0.6 : 1,
             })}
           >
-            <Text className="text-xl font-extralight">See all</Text>
+            <Text className="text-sm font-normal text-primary-500">
+              See all
+            </Text>
           </Pressable>
         </View>
 

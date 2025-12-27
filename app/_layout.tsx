@@ -13,12 +13,6 @@ export default function RootLayout() {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="sellAllTransactions"
-          options={{
-            headerShown: false,
-          }}
-        />
       </Stack>
     </>
   );
