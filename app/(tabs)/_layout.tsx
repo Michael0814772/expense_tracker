@@ -6,8 +6,8 @@ import { TransactionIcon } from "@/components/icons/TransactionIcon";
 import { router, Tabs } from "expo-router";
 import { View } from "react-native";
 
-const ACTIVE = "#7C3AED";     // brand purple
-const INACTIVE = "#9CA3AF";   // gray
+const ACTIVE = "#7C3AED"; // brand purple
+const INACTIVE = "#9CA3AF"; // gray
 
 export default function TabLayout() {
   return (
@@ -22,9 +22,9 @@ export default function TabLayout() {
           paddingBottom: 6,
         },
         tabBarLabelStyle: {
-      fontSize: 10,
-      fontWeight: "500",
-    },
+          fontSize: 10,
+          fontWeight: "500",
+        },
       }}
     >
       <Tabs.Screen
@@ -36,9 +36,9 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="transactions"
+        name="transactionsTab"
         options={{
-          title: "Transactions",
+          title: "transactions",
           tabBarIcon: ({ color }) => (
             <View className="">
               <TransactionIcon color={color} />

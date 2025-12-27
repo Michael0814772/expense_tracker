@@ -42,7 +42,7 @@ export default function Index() {
         >
           <Text className="text-lg font-medium">Transactions</Text>
           <Pressable
-            onPress={() => router.push("/transactions")}
+            onPress={() => router.push("/transactionsTab")}
             style={({ pressed }) => ({
               opacity: pressed ? 0.6 : 1,
             })}
@@ -63,6 +63,7 @@ export default function Index() {
                 reason={item.reason}
                 dateTime={item.dateTime}
                 amount={item.amount}
+                showBottomBorder={true}
               />
             )}
             ItemSeparatorComponent={() => (
