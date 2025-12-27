@@ -4,19 +4,41 @@ import { BackArrowIcon } from "@/components/icons/BackArrowIcon";
 import FilterTabs from "@/components/ui/FilterTabs";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { SearchFilterData } from "@/data/searchFilter";
-import { transactions } from "@/data/transactions";
+import { transactions as initialTransactions } from "@/data/transactions";
 import filterTransactionsByReason from "@/utils/filterTransactionsByReason";
 import groupTransactionsByDate from "@/utils/groupTransactionsByDate";
+import { router } from "expo-router";
 import React from "react";
-import { Pressable, SectionList, Text, View } from "react-native";
+import {
+  Platform,
+  Pressable,
+  SectionList,
+  Text,
+  UIManager,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+/* Enable LayoutAnimation on Android */
+if (Platform.OS === "android") {
+  UIManager.setLayoutAnimationEnabledExperimental?.(true);
+}
 
 const transactionsTab = () => {
   const [search, setSearch] = React.useState("");
   const [filter, setFilter] = React.useState("all");
+  const [deleteTransactions, setDeleteTransactions] =
+    React.useState(initialTransactions);
+
+  /* =========================
+   * DELETE HANDLER
+   * ========================= */
+  function handleDeleteTransaction(id: string) {
+    setDeleteTransactions((prev) => prev.filter((tx) => tx.id !== id));
+  }
 
   const filteredTransactions = filterTransactionsByReason(
-    transactions,
+    deleteTransactions,
     search,
     filter
   );
@@ -35,7 +57,7 @@ const transactionsTab = () => {
             marginBottom: 20,
           }}
         >
-          <Pressable>
+          <Pressable onPress={() => router.back()}>
             <BackArrowIcon />
           </Pressable>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>Transactions</Text>
@@ -80,11 +102,14 @@ const transactionsTab = () => {
                 }}
               >
                 <TransactionItem
+                  id={item.id}
                   categoryId={item.categoryId}
                   reason={item.reason}
                   dateTime={item.dateTime}
                   amount={item.amount}
                   showBottomBorder={false}
+                  showDeleteBottom={true}
+                  onDelete={handleDeleteTransaction}
                 />
               </View>
             )}

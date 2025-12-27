@@ -1,24 +1,71 @@
 import { COLORS } from "@/constants/colors";
 import { getCategoryById } from "@/utils/getCategoryById";
-import { Image, Text, View } from "react-native";
+import { useRef } from "react";
+import { Alert, Animated, Image, Pressable, Text, View } from "react-native";
+import { DeleteIcon } from "../icons/DeleteIcon";
 
 type Props = {
+  id?: string;
   categoryId: string;
   reason: string;
   dateTime: string;
   amount: number;
   showBottomBorder: boolean;
+  showDeleteBottom?: boolean;
+  onDelete?: (id: string) => void;
 };
 
 export function TransactionItem({
+  id,
   categoryId,
   reason,
   dateTime,
   amount,
   showBottomBorder,
+  showDeleteBottom,
+  onDelete,
 }: Props) {
   const isIncome = amount > 0;
   const category = getCategoryById(categoryId);
+
+  /* Press animation */
+  const scaleAnim = useRef(new Animated.Value(1)).current;
+
+  function pressIn() {
+    Animated.timing(scaleAnim, {
+      toValue: 0.9,
+      duration: 180,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  function pressOut() {
+    Animated.timing(scaleAnim, {
+      toValue: 1,
+      duration: 180,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  function confirmDelete() {
+    Alert.alert(
+      "Delete Transaction",
+      "Are you sure you want to delete this transaction?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: () => {
+            if (onDelete && id) {
+              onDelete(id);
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  }
 
   return (
     <View
@@ -58,15 +105,38 @@ export function TransactionItem({
       </View>
 
       {/* Amount */}
-      <Text
+      <View
         style={{
-          fontWeight: "600",
-          color: isIncome ? "#16a34a" : "#ef4444",
-          fontSize: 12,
+          alignItems: "center",
+          flexDirection: "row",
+          gap: 10,
         }}
       >
-        {isIncome ? "+" : "-"}₦{Math.abs(amount).toLocaleString()}
-      </Text>
+        <Text
+          style={{
+            fontWeight: "600",
+            color: isIncome ? "#16a34a" : "#ef4444",
+            fontSize: 12,
+          }}
+        >
+          {isIncome ? "+" : "-"}₦{Math.abs(amount).toLocaleString()}
+        </Text>
+
+        {showDeleteBottom && onDelete && id && (
+          <Pressable
+            onPress={confirmDelete}
+            onPressIn={pressIn}
+            onPressOut={pressOut}
+            style={({ pressed }) => ({
+              opacity: pressed ? 0.6 : 1,
+            })}
+          >
+            <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+              <DeleteIcon size={18} color="#000000" />
+            </Animated.View>
+          </Pressable>
+        )}
+      </View>
     </View>
   );
 }
