@@ -27,4 +27,18 @@ export const transactions = [
     dateTime: "2025-01-09 20:30",
     amount: -5000,
   },
+  {
+    id: "5",
+    categoryId: "7",
+    reason: "Game payment",
+    dateTime: "2025-01-10 20:30",
+    amount: -5000,
+  },
+  {
+    id: "6",
+    categoryId: "2",
+    reason: "Uber ride",
+    dateTime: "2025-01-13 18:20",
+    amount: -1200,
+  },
 ];

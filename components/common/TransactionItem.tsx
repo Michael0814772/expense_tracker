@@ -7,6 +7,7 @@ type Props = {
   reason: string;
   dateTime: string;
   amount: number;
+  showBottomBorder: boolean;
 };
 
 export function TransactionItem({
@@ -14,6 +15,7 @@ export function TransactionItem({
   reason,
   dateTime,
   amount,
+  showBottomBorder,
 }: Props) {
   const isIncome = amount > 0;
   const category = getCategoryById(categoryId);
@@ -22,7 +24,7 @@ export function TransactionItem({
     <View
       className="flex-row items-center justify-between py-4 mb-4"
       style={{
-        borderBottomWidth: 3,
+        borderBottomWidth: showBottomBorder ? 3 : 0,
         borderBottomColor: COLORS.gray[200],
         paddingBottom: 12,
         paddingTop: 12,
