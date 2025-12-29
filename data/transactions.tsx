@@ -5,6 +5,7 @@ export const transactions = [
     reason: "Lunch",
     dateTime: "2025-01-12 10:45",
     amount: -2500,
+    type: "expense",
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ export const transactions = [
     reason: "Uber ride",
     dateTime: "2025-01-11 18:20",
     amount: -1200,
+    type: "expense",
   },
   {
     id: "3",
@@ -19,6 +21,7 @@ export const transactions = [
     reason: "Salary",
     dateTime: "2025-01-10 09:00",
     amount: 150000,
+    type: "income",
   },
   {
     id: "4",
@@ -26,6 +29,7 @@ export const transactions = [
     reason: "Game purchase",
     dateTime: "2025-01-09 20:30",
     amount: -5000,
+    type: "expense",
   },
   {
     id: "5",
@@ -33,6 +37,7 @@ export const transactions = [
     reason: "Game payment",
     dateTime: "2025-01-10 20:30",
     amount: -5000,
+    type: "expense",
   },
   {
     id: "6",
@@ -40,5 +45,6 @@ export const transactions = [
     reason: "Uber ride",
     dateTime: "2025-01-13 18:20",
     amount: -1200,
+    type: "expense",
   },
 ];
