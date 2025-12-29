@@ -13,6 +13,13 @@ export default function RootLayout() {
             headerShown: false,
           }}
         />
+
+        <Stack.Screen
+          name="add-transaction"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
     </>
   );
