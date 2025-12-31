@@ -4,7 +4,7 @@ import { BackArrowIcon } from "@/components/icons/BackArrowIcon";
 import FilterTabs from "@/components/ui/FilterTabs";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { SearchFilterData } from "@/data/searchFilter";
-import { transactions as initialTransactions } from "@/data/transactions";
+import { transactionData as initialTransactions } from "@/data/transactions";
 import filterTransactionsByReason from "@/utils/filterTransactionsByReason";
 import groupTransactionsByDate from "@/utils/groupTransactionsByDate";
 import { router } from "expo-router";
