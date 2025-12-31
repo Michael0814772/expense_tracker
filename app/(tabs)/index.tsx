@@ -6,7 +6,7 @@ import { BalanceStatsRow } from "@/components/card/BalanceStatsRow";
 import { TransactionItem } from "@/components/common/TransactionItem";
 import { GridIcon } from "@/components/icons/GridIcon";
 import { NotificationIcon } from "@/components/icons/NotificationIcon";
-import { transactions } from "@/data/transactions";
+import { transactionData } from "@/data/transactions";
 import { router } from "expo-router";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -15,7 +15,7 @@ export default function Index() {
   return (
     <SafeAreaView>
       <View className="px-5">
-        <View className="flex-row justify-between items-center mb-12">
+        <View className="flex-row justify-between items-center mb-8">
           <GridIcon />
           {/* Home content */}
           <Text className="text-2xl font-extrabold">Home</Text>
@@ -55,7 +55,7 @@ export default function Index() {
 
         <View>
           <FlatList
-            data={transactions}
+            data={transactionData}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <TransactionItem

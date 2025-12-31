@@ -1,4 +1,4 @@
-export const transactions = [
+export const transactionData = [
   {
     id: "1",
     categoryId: "1",
