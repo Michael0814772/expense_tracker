@@ -1,7 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Advertisement = () => {
+type Props = {
+  displayAdd?: boolean;
+};
+
+const Advertisement = ({ displayAdd }: Props) => {
   return (
     <View
       style={{
@@ -12,7 +16,7 @@ const Advertisement = () => {
         borderRadius: 12,
         alignItems: "center",
         justifyContent: "center",
-        display: "none",
+        display: displayAdd ? "flex" : "none",
       }}
     >
       <Text
