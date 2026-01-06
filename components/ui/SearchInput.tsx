@@ -1,5 +1,6 @@
 import { SearchIcon } from "@/components/icons/SearchIcon";
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { TextInput, View } from "react-native";
 
 export function SearchInput({
@@ -11,13 +12,18 @@ export function SearchInput({
   onChangeText: (text: string) => void;
   placeholder?: string;
 }) {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <View
       style={{
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: COLORS.text.white,
+        backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200],
         borderRadius: 16,
+        borderWidth: 0.4,
+        borderColor: isDark ? COLORS.gray[200] : COLORS.gray[900],
         paddingHorizontal: 14,
         height: 50,
       }}

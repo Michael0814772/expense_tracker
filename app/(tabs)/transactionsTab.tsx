@@ -3,6 +3,8 @@ import { TransactionItem } from "@/components/common/TransactionItem";
 import { BackArrowIcon } from "@/components/icons/BackArrowIcon";
 import FilterTabs from "@/components/ui/FilterTabs";
 import { SearchInput } from "@/components/ui/SearchInput";
+import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { SearchFilterData } from "@/data/searchFilter";
 import { transactionData as initialTransactions } from "@/data/transactions";
 import filterTransactionsByReason from "@/utils/filterTransactionsByReason";
@@ -30,6 +32,9 @@ const transactionsTab = () => {
   const [deleteTransactions, setDeleteTransactions] =
     React.useState(initialTransactions);
 
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   /* =========================
    * DELETE HANDLER
    * ========================= */
@@ -46,7 +51,9 @@ const transactionsTab = () => {
   const sections = groupTransactionsByDate(filteredTransactions);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{ backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200] }}
+    >
       <View className="px-5">
         <View
           style={{
@@ -58,9 +65,19 @@ const transactionsTab = () => {
           }}
         >
           <Pressable onPress={() => router.back()}>
-            <BackArrowIcon />
+            <BackArrowIcon
+              color={isDark ? COLORS.gray[200] : COLORS.gray[900]}
+            />
           </Pressable>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Transactions</Text>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+            }}
+          >
+            Transactions
+          </Text>
           <Text></Text>
         </View>
 
@@ -86,7 +103,12 @@ const transactionsTab = () => {
             keyExtractor={(item) => item.id}
             renderSectionHeader={({ section }) => (
               <Text
-                style={{ fontWeight: "600", marginVertical: 8, marginTop: 20 }}
+                style={{
+                  fontWeight: "600",
+                  marginVertical: 8,
+                  marginTop: 20,
+                  color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+                }}
               >
                 {section.title}
               </Text>
@@ -94,7 +116,7 @@ const transactionsTab = () => {
             renderItem={({ item }) => (
               <View
                 style={{
-                  backgroundColor: "#F9FAFB",
+                  backgroundColor: isDark ? COLORS.gray[700] : COLORS.gray[300],
                   borderRadius: 12,
                   paddingHorizontal: 12,
                   marginBottom: 8,

@@ -1,4 +1,5 @@
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { getCategoryById } from "@/utils/getCategoryById";
 import { useRef } from "react";
 import { Alert, Animated, Image, Pressable, Text, View } from "react-native";
@@ -27,6 +28,9 @@ export function TransactionItem({
 }: Props) {
   const isIncome = amount > 0;
   const category = getCategoryById(categoryId);
+
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   /* Press animation */
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -71,7 +75,7 @@ export function TransactionItem({
     <View
       className="flex-row items-center justify-between py-4 mb-4"
       style={{
-        borderBottomWidth: showBottomBorder ? 3 : 0,
+        borderBottomWidth: showBottomBorder ? 0.5 : 0,
         borderBottomColor: COLORS.gray[200],
         paddingBottom: 12,
         paddingTop: 12,
@@ -81,8 +85,15 @@ export function TransactionItem({
       <View className="flex-row items-center">
         {/* Icon (text-based) */}
         <View
-          className="w-12 h-12 rounded-full bg-gray-100 items-center justify-center"
-          style={{ marginRight: 8 }}
+          style={{
+            marginRight: 8,
+            width: 48,
+            height: 48,
+            borderRadius: 24,
+            backgroundColor: isDark ? COLORS.gray[700] : COLORS.gray[200],
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           {category?.imageUrl ? (
             <Image
@@ -91,16 +102,38 @@ export function TransactionItem({
               resizeMode="contain"
             />
           ) : (
-            <Text className="text-xs font-semibold">{categoryId}</Text>
+            <Text
+              className="text-xs font-semibold"
+              style={{ color: isDark ? COLORS.gray[200] : COLORS.gray[900] }}
+            >
+              {categoryId}
+            </Text>
           )}
         </View>
 
         {/* Details */}
         <View className="ml-3">
-          <Text className="font-semibold text-sm" style={{ marginBottom: 3 }}>
+          <Text
+            style={{
+              marginBottom: 3,
+              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+              fontSize: 15,
+              lineHeight: 20,
+              fontWeight: 600,
+            }}
+          >
             {reason}
           </Text>
-          <Text style={{ color: "#888", fontSize: 12 }}>{dateTime}</Text>
+          <Text
+            style={{
+              fontSize: 12,
+              lineHeight: 20,
+              fontWeight: 400,
+              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+            }}
+          >
+            {dateTime}
+          </Text>
         </View>
       </View>
 

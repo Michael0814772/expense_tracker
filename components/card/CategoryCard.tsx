@@ -1,4 +1,5 @@
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { categories } from "@/data/categories";
 import React from "react";
 import { Image, Pressable, Text, View } from "react-native";
@@ -7,9 +8,19 @@ type Props = {
   type: string;
   categoryIdSelected: (value: string) => void;
   categoryId: string;
+  backgroundColor: string;
+  textColor: string;
 };
 
-const CategoryCard = ({ type, categoryIdSelected, categoryId }: Props) => {
+const CategoryCard = ({
+  type,
+  categoryIdSelected,
+  categoryId,
+  backgroundColor,
+  textColor,
+}: Props) => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   return (
     <View
       style={{
@@ -45,6 +56,8 @@ const CategoryCard = ({ type, categoryIdSelected, categoryId }: Props) => {
                 // ight purple overlay when selected
                 backgroundColor: isSelected
                   ? COLORS.primary[100]
+                  : isDark
+                  ? COLORS.gray[700]
                   : COLORS.gray[200],
               }}
             >
