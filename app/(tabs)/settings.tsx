@@ -12,15 +12,20 @@ import NotificationReport from "@/components/icons/NotificationReport";
 import PrivacyPolicy from "@/components/icons/PrivacyPolicy";
 import RateUsIcon from "@/components/icons/RateUsIcon";
 import ShareAppIcon from "@/components/icons/ShareAppIcon";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const settings = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const styles = createStyles(isDark);
   const displayAdvert = false;
   return (
-    <SafeAreaView style={{ backgroundColor: COLORS.gray[200] }}>
+    <SafeAreaView style={styles.screen}>
       <ScrollView>
         <View style={{ paddingHorizontal: 20 }}>
           <View
@@ -31,40 +36,17 @@ const settings = () => {
               marginBottom: !displayAdvert ? 20 : 0,
             }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>settings</Text>
+            <Text style={styles.headerTitle}>settings</Text>
           </View>
 
           <View>
             <Advertisement displayAdd={displayAdvert} />
           </View>
 
-          <Text
-            style={{
-              color: COLORS.gray[600],
-              fontSize: 15,
-              marginBottom: 20,
-              paddingHorizontal: 8,
-            }}
-          >
-            QUICK ACTIONS
-          </Text>
+          <Text style={styles.sectionTitle}>QUICK ACTIONS</Text>
 
-          <View
-            style={{
-              backgroundColor: COLORS.background.white,
-              borderRadius: 24,
-              marginBottom: 20,
-              // iOS shadow
-              shadowColor: "#000",
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.1,
-              shadowRadius: 8,
-
-              // Android shadow
-              elevation: 4,
-            }}
-          >
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+          <View style={styles.cardContainer}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Budget Management"
                 header2="Track your spending limit"
@@ -73,16 +55,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Finacial Reports"
                 header2="View detailed analytics"
@@ -92,33 +67,10 @@ const settings = () => {
             </View>
           </View>
 
-          <Text
-            style={{
-              color: COLORS.gray[600],
-              fontSize: 15,
-              marginBottom: 20,
-              paddingHorizontal: 8,
-            }}
-          >
-            GENERAL
-          </Text>
+          <Text style={styles.sectionTitle}>GENERAL</Text>
 
-          <View
-            style={{
-              backgroundColor: COLORS.background.white,
-              borderRadius: 24,
-              marginBottom: 20,
-              // iOS shadow
-              shadowColor: "#000",
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.1,
-              shadowRadius: 8,
-
-              // Android shadow
-              elevation: 4,
-            }}
-          >
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+          <View style={styles.cardContainer}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Notifications"
                 header2="Manage alerts and reminders"
@@ -127,34 +79,21 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Dark Mode"
                 header2="Enable dark theme"
                 icon1={<DarkModeSwitch />}
                 backgroundColor1={COLORS.indigo[200]}
+                icon2={<ThemeToggle />}
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Language"
                 header2="English"
@@ -163,16 +102,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Currency"
                 header2="Naira (#)"
@@ -182,33 +114,10 @@ const settings = () => {
             </View>
           </View>
 
-          <Text
-            style={{
-              color: COLORS.gray[600],
-              fontSize: 15,
-              marginBottom: 20,
-              paddingHorizontal: 8,
-            }}
-          >
-            DATA
-          </Text>
+          <Text style={styles.sectionTitle}>DATA</Text>
 
-          <View
-            style={{
-              backgroundColor: COLORS.background.white,
-              borderRadius: 24,
-              marginBottom: 20,
-              // iOS shadow
-              shadowColor: "#000",
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.1,
-              shadowRadius: 8,
-
-              // Android shadow
-              elevation: 4,
-            }}
-          >
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+          <View style={styles.cardContainer}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Export Data"
                 header2="Dowload your transactions"
@@ -217,16 +126,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Clear All Data"
                 header2="Delete all transactions"
@@ -238,33 +140,10 @@ const settings = () => {
 
           <Advertisement />
 
-          <Text
-            style={{
-              color: COLORS.gray[600],
-              fontSize: 15,
-              marginBottom: 20,
-              paddingHorizontal: 8,
-            }}
-          >
-            ABOUT & SUPPORT
-          </Text>
+          <Text style={styles.sectionTitle}>ABOUT & SUPPORT</Text>
 
-          <View
-            style={{
-              backgroundColor: COLORS.background.white,
-              borderRadius: 24,
-              marginBottom: 20,
-              // iOS shadow
-              shadowColor: "#000",
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.1,
-              shadowRadius: 8,
-
-              // Android shadow
-              elevation: 4,
-            }}
-          >
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+          <View style={styles.cardContainer}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Rate US"
                 header2="Enjoying this app?"
@@ -273,16 +152,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Share App"
                 header2="Tell your friends"
@@ -291,16 +163,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Help & Support"
                 header2="Get assistance"
@@ -309,16 +174,9 @@ const settings = () => {
               />
             </View>
 
-            <View
-              style={{
-                borderColor: COLORS.gray[200],
-                borderWidth: 0.4,
-                marginTop: 1,
-                marginBottom: 1,
-              }}
-            ></View>
+            <View style={styles.divider}></View>
 
-            <View style={{ paddingVertical: 18, paddingHorizontal: 20 }}>
+            <View style={styles.cardPadding}>
               <SettingCard
                 header1="Privacy Policy"
                 header2="Read our policy"
@@ -330,21 +188,14 @@ const settings = () => {
         </View>
 
         <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 20,
-          }}
+          style={[
+            styles.center,
+            {
+              marginTop: 20,
+            },
+          ]}
         >
-          <Text
-            style={{
-              color: COLORS.gray[400],
-              fontSize: 15,
-              paddingHorizontal: 8,
-            }}
-          >
-            Expense Tracker v1.0.0
-          </Text>
+          <Text style={styles.footerText}>Expense Tracker v1.0.0</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -352,3 +203,60 @@ const settings = () => {
 };
 
 export default settings;
+
+const createStyles = (isDark: boolean) =>
+  StyleSheet.create({
+    screen: {
+      backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200],
+    },
+
+    headerTitle: {
+      fontSize: 20,
+      fontWeight: "bold",
+      color: isDark ? COLORS.gray[100] : COLORS.gray[800],
+    },
+
+    sectionTitle: {
+      fontSize: 15,
+      marginBottom: 20,
+      paddingHorizontal: 8,
+      color: isDark ? COLORS.gray[400] : COLORS.gray[600],
+    },
+
+    cardContainer: {
+      backgroundColor: isDark ? COLORS.gray[800] : COLORS.background.white,
+      borderRadius: 24,
+      marginBottom: 20,
+
+      // iOS shadow
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+
+      // Android
+      elevation: 4,
+    },
+
+    divider: {
+      borderColor: isDark ? COLORS.gray[700] : COLORS.gray[200],
+      borderWidth: 0.4,
+      marginVertical: 1,
+    },
+
+    cardPadding: {
+      paddingVertical: 18,
+      paddingHorizontal: 20,
+    },
+
+    footerText: {
+      fontSize: 15,
+      color: COLORS.gray[400],
+      paddingHorizontal: 8,
+    },
+
+    center: {
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  });

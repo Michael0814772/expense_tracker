@@ -4,6 +4,7 @@ import { FormInputTab } from "@/components/ui/FormInputTab";
 import SubmitButton from "@/components/ui/SubmitButton";
 import GradientToggleButton from "@/components/ui/TypeButton";
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import formatDateTime from "@/utils/formatDateTime";
 import { router } from "expo-router";
 import React from "react";
@@ -33,6 +34,9 @@ const addTransactions = () => {
 
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
   const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   function handleSubmit() {
     if (!amount || !description || !selectedCategoryId || !selectedDate) {
@@ -64,7 +68,12 @@ const addTransactions = () => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200],
+      }}
+    >
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -122,7 +131,7 @@ const addTransactions = () => {
               style={{
                 fontSize: 16,
                 fontWeight: "600",
-                color: COLORS.text.primary,
+                color: isDark ? COLORS.gray[200] : COLORS.gray[900],
               }}
             >
               Category
@@ -133,6 +142,8 @@ const addTransactions = () => {
               type={type}
               categoryIdSelected={setSelectedCategoryId}
               categoryId={selectedCategoryId}
+              backgroundColor={isDark ? COLORS.gray[700] : COLORS.gray[200]}
+              textColor={isDark ? COLORS.gray[200] : COLORS.gray[900]}
             />
           </View>
 
@@ -141,7 +152,7 @@ const addTransactions = () => {
               style={{
                 fontSize: 16,
                 fontWeight: "600",
-                color: COLORS.text.primary,
+                color: isDark ? COLORS.gray[200] : COLORS.gray[900],
                 marginBottom: 10,
               }}
             >

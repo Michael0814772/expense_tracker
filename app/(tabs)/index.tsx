@@ -6,21 +6,39 @@ import { BalanceStatsRow } from "@/components/card/BalanceStatsRow";
 import { TransactionItem } from "@/components/common/TransactionItem";
 import { GridIcon } from "@/components/icons/GridIcon";
 import { NotificationIcon } from "@/components/icons/NotificationIcon";
+import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { transactionData } from "@/data/transactions";
 import { router } from "expo-router";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[100],
+        flex: 1,
+      }}
+    >
       <View className="px-5">
         <View className="flex-row justify-between items-center mb-8">
-          <GridIcon />
+          <GridIcon color={isDark ? COLORS.gray[200] : "#000000"} />
           {/* Home content */}
-          <Text className="text-2xl font-extrabold">Home</Text>
+          <Text
+            style={{
+              fontSize: 24,
+              lineHeight: 32,
+              fontWeight: "800",
+              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+            }}
+          >
+            Home
+          </Text>
 
-          <NotificationIcon color="#000000" />
+          <NotificationIcon color={isDark ? COLORS.gray[200] : "#000000"} />
         </View>
 
         <BalanceCard>
@@ -40,7 +58,12 @@ export default function Index() {
             alignItems: "center",
           }}
         >
-          <Text className="text-lg font-medium">Transactions</Text>
+          <Text
+            className="text-lg font-medium"
+            style={{ color: isDark ? COLORS.gray[200] : COLORS.gray[900] }}
+          >
+            Transactions
+          </Text>
           <Pressable
             onPress={() => router.push("/transactionsTab")}
             style={({ pressed }) => ({
@@ -66,9 +89,7 @@ export default function Index() {
                 showBottomBorder={true}
               />
             )}
-            ItemSeparatorComponent={() => (
-              <View className="h-[1px] bg-gray-100" />
-            )}
+            ItemSeparatorComponent={() => <View className="h-[.2px]" />}
             showsVerticalScrollIndicator={false}
           />
         </View>

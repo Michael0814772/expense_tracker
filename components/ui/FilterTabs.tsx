@@ -1,4 +1,5 @@
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 
@@ -15,6 +16,9 @@ type Props = {
 };
 
 const FilterTabs = ({ data, active, onChange }: Props) => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <View
       style={{ marginTop: 20, marginBottom: 24, flexDirection: "row", gap: 12 }}

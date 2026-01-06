@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/context/ThemeContext";
 import { Stack } from "expo-router";
 import "./globals.css";
 
@@ -6,21 +7,23 @@ export default function RootLayout() {
     <>
       {/* <StatusBar hidden={true} /> */}
 
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-          }}
-        />
+      <ThemeProvider>
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+            }}
+          />
 
-        <Stack.Screen
-          name="add-transaction"
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack>
+          <Stack.Screen
+            name="add-transaction"
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack>
+      </ThemeProvider>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import { Platform, Pressable, TextInput, View } from "react-native";
@@ -10,6 +11,8 @@ type Props = {
 
 export function DateInput({ dateSet, dateSelected }: Props) {
   const [showPicker, setShowPicker] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   function onChange(_: any, selectedDate?: Date) {
     setShowPicker(false);
@@ -28,11 +31,11 @@ export function DateInput({ dateSet, dateSelected }: Props) {
           style={{
             padding: 16,
             borderRadius: 12,
-            backgroundColor: COLORS.gray[200],
             fontSize: 16,
             color: COLORS.text.primary,
             fontWeight: "700",
             minHeight: 50,
+            backgroundColor: isDark ? COLORS.gray[500] : COLORS.gray[200],
           }}
         />
       </Pressable>

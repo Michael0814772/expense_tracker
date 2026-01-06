@@ -3,6 +3,8 @@ import { HomeIcon } from "@/components/icons/HomeIcon";
 import { ReportIcon } from "@/components/icons/ReportIcon";
 import { SettingsIcon } from "@/components/icons/SettingsIcon";
 import { TransactionIcon } from "@/components/icons/TransactionIcon";
+import { COLORS } from "@/constants/colors";
+import { useTheme } from "@/context/ThemeContext";
 import { router, Tabs } from "expo-router";
 import { View } from "react-native";
 
@@ -10,16 +12,20 @@ const ACTIVE = "#7C3AED"; // brand purple
 const INACTIVE = "#9CA3AF"; // gray
 
 export default function TabLayout() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: true,
         tabBarActiveTintColor: ACTIVE,
-        tabBarInactiveTintColor: INACTIVE,
+        tabBarInactiveTintColor: isDark ? COLORS.gray[100] : INACTIVE,
         tabBarStyle: {
           height: 60,
           paddingBottom: 6,
+          backgroundColor: isDark ? COLORS.gray[900] : "#FFFFFF",
+          borderColor: isDark ? "none" : COLORS.gray[200],
         },
         tabBarLabelStyle: {
           fontSize: 10,
