@@ -75,8 +75,8 @@ export function TransactionItem({
     <View
       className="flex-row items-center justify-between py-4 mb-4"
       style={{
-        borderBottomWidth: showBottomBorder ? 0.5 : 0,
-        borderBottomColor: COLORS.gray[200],
+        borderBottomWidth: showBottomBorder ? 0.2 : 0,
+        borderBottomColor: COLORS.gray[100],
         paddingBottom: 12,
         paddingTop: 12,
       }}
@@ -165,7 +165,10 @@ export function TransactionItem({
             })}
           >
             <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-              <DeleteIcon size={18} color="#000000" />
+              <DeleteIcon
+                size={18}
+                color={isDark ? COLORS.gray[200] : COLORS.gray[900]}
+              />
             </Animated.View>
           </Pressable>
         )}

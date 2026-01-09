@@ -57,7 +57,10 @@ const transactionsTab = () => {
 
   return (
     <SafeAreaView
-      style={{ backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200] }}
+      style={{
+        backgroundColor: isDark ? COLORS.gray[900] : COLORS.gray[200],
+        flex: 1,
+      }}
     >
       <View className="px-5">
         <View
