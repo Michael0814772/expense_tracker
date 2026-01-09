@@ -1,4 +1,5 @@
 import CategoryCard from "@/components/card/CategoryCard";
+import { BackArrowIcon } from "@/components/icons/BackArrowIcon";
 import { DateInput } from "@/components/ui/DateInput";
 import { FormInputTab } from "@/components/ui/FormInputTab";
 import SubmitButton from "@/components/ui/SubmitButton";
@@ -11,6 +12,7 @@ import React from "react";
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   Text,
   View,
@@ -91,8 +93,15 @@ const addTransactions = () => {
               flexDirection: "row",
               marginTop: 10,
               gap: 10,
+              alignItems: "center",
             }}
           >
+            <Pressable onPress={() => router.back()}>
+              <BackArrowIcon
+                color={isDark ? COLORS.gray[200] : COLORS.gray[900]}
+              />
+            </Pressable>
+
             <GradientToggleButton
               label="Expense"
               value="expense"

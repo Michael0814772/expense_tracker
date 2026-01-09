@@ -35,8 +35,16 @@ const reports = () => {
   const filteredTransactions = filterTransactionsByReason(
     deleteTransactions,
     search,
-    filter
-  );
+    filter,
+    year,
+    month,
+    mode
+  ).sort((a, b) => {
+    // Sort by date descending (newest first)
+    const dateA = new Date(a.dateTime.replace(" ", "T")).getTime();
+    const dateB = new Date(b.dateTime.replace(" ", "T")).getTime();
+    return dateB - dateA;
+  });
 
   const { income, expense } = useMemo(() => {
     return {
@@ -76,7 +84,7 @@ const reports = () => {
                 {/* Home content */}
                 <Text
                   style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     lineHeight: 32,
                     fontWeight: "800",
                     color: isDark ? COLORS.gray[200] : COLORS.gray[700],

@@ -71,4 +71,12 @@ export const transactionData = [
     amount: -120000,
     type: "expense",
   },
+  {
+    id: "10",
+    categoryId: "4",
+    reason: "Game purchase",
+    dateTime: "2025-01-10 20:30",
+    amount: -5000,
+    type: "expense",
+  },
 ];

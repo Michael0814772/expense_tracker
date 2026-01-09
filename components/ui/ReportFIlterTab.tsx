@@ -39,16 +39,16 @@ const ReportFIlterTab = ({ data, active, onChange }: Props) => {
                     ? COLORS.orange[500]
                     : COLORS.icon.purple
                   : COLORS.text.white,
-                paddingHorizontal: 50,
+                paddingHorizontal: 60,
                 paddingVertical: 8,
-                borderRadius: 10,
+                borderRadius: 20,
               }}
             >
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 17,
                   lineHeight: 30,
-                  fontWeight: "600",
+                  fontWeight: "700",
                   fontStyle: "normal",
                   color: isActive ? COLORS.text.white : COLORS.text.primary,
                 }}

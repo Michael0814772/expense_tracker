@@ -19,6 +19,13 @@ export default function Index() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  transactionData.sort((a, b) => {
+    // Sort by date descending (newest first)
+    const dateA = new Date(a.dateTime.replace(" ", "T")).getTime();
+    const dateB = new Date(b.dateTime.replace(" ", "T")).getTime();
+    return dateB - dateA;
+  });
+
   const { income, expense } = useMemo(() => {
     return {
       income: totalIncome(transactionData),
@@ -36,21 +43,23 @@ export default function Index() {
       }}
     >
       <View className="px-5">
-        <View className="flex-row justify-between items-center mb-8">
-          <GridIcon color={isDark ? COLORS.gray[200] : "#000000"} />
+        <View className="flex-row justify-between items-center mb-6">
+          <GridIcon color={isDark ? COLORS.gray[200] : COLORS.gray[700]} />
           {/* Home content */}
           <Text
             style={{
-              fontSize: 24,
+              fontSize: 20,
               lineHeight: 32,
               fontWeight: "800",
-              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+              color: isDark ? COLORS.gray[200] : COLORS.gray[700],
             }}
           >
             Home
           </Text>
 
-          <NotificationIcon color={isDark ? COLORS.gray[200] : "#000000"} />
+          <NotificationIcon
+            color={isDark ? COLORS.gray[200] : COLORS.gray[700]}
+          />
         </View>
 
         <BalanceCard>
@@ -74,8 +83,12 @@ export default function Index() {
           }}
         >
           <Text
-            className="text-lg font-medium"
-            style={{ color: isDark ? COLORS.gray[200] : COLORS.gray[900] }}
+            style={{
+              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+              fontSize: 16,
+              fontWeight: "600",
+              lineHeight: 30,
+            }}
           >
             Transactions
           </Text>
@@ -85,7 +98,14 @@ export default function Index() {
               opacity: pressed ? 0.6 : 1,
             })}
           >
-            <Text className="text-sm font-normal text-primary-500">
+            <Text
+              style={{
+                color: COLORS.primary[500],
+                fontSize: 14,
+                fontWeight: "500",
+                lineHeight: 30,
+              }}
+            >
               See all
             </Text>
           </Pressable>
