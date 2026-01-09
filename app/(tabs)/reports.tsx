@@ -123,7 +123,7 @@ const reports = () => {
               <View style={{ marginBottom: 20 }}>
                 <Text
                   style={{
-                    color: COLORS.gray[500],
+                    color: isDark ? COLORS.gray[400] : COLORS.gray[500],
                     fontSize: 20,
                     lineHeight: 30,
                     fontWeight: "600",
@@ -143,7 +143,7 @@ const reports = () => {
                 >
                   <Text
                     style={{
-                      color: COLORS.gray[800],
+                      color: isDark ? COLORS.gray[200] : COLORS.gray[800],
                       lineHeight: 30,
                       fontSize: 12,
                       fontWeight: "600",
