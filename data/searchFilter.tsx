@@ -11,7 +11,7 @@ export const SearchFilterData = [
   },
   {
     id: "3",
-    label: "Expense",
+    label: "Expenses",
     searchWord: "expense",
   },
 ];

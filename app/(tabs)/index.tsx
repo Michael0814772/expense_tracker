@@ -9,13 +9,25 @@ import { NotificationIcon } from "@/components/icons/NotificationIcon";
 import { COLORS } from "@/constants/colors";
 import { useTheme } from "@/context/ThemeContext";
 import { transactionData } from "@/data/transactions";
+import { totalExpense, totalIncome } from "@/utils/transactionTotals";
 import { router } from "expo-router";
+import { useMemo } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
+  const { income, expense } = useMemo(() => {
+    return {
+      income: totalIncome(transactionData),
+      expense: totalExpense(transactionData),
+    };
+  }, []);
+
+  const balance = income - expense;
+
   return (
     <SafeAreaView
       style={{
@@ -43,8 +55,11 @@ export default function Index() {
 
         <BalanceCard>
           <BalanceHeader title="Total Balance" />
-          <BalanceAmount amount="$3,257.00" />
-          <BalanceStatsRow income="$2,350.00" expenses="$950.00" />
+          <BalanceAmount amount={`₦${balance.toLocaleString()}`} />
+          <BalanceStatsRow
+            income={`₦ ${income.toLocaleString()}`}
+            expenses={`₦ ${expense.toLocaleString()}`}
+          />
         </BalanceCard>
 
         <Advertisement />

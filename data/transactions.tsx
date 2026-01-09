@@ -47,4 +47,28 @@ export const transactionData = [
     amount: -1200,
     type: "expense",
   },
+  {
+    id: "7",
+    categoryId: "2",
+    reason: "Uber ride",
+    dateTime: "2024-12-13 18:20",
+    amount: -1200,
+    type: "expense",
+  },
+  {
+    id: "8",
+    categoryId: "2",
+    reason: "Uber ride",
+    dateTime: "2024-12-14 18:20",
+    amount: 1200,
+    type: "income",
+  },
+  {
+    id: "9",
+    categoryId: "2",
+    reason: "Uber ride",
+    dateTime: "2025-01-1 18:20",
+    amount: -120000,
+    type: "expense",
+  },
 ];
