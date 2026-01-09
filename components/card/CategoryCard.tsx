@@ -62,7 +62,7 @@ const CategoryCard = ({
               }}
             >
               <Image
-                source={{ uri: category.imageUrl }}
+                source={category.imageUrl}
                 style={{ width: 24, height: 24 }}
                 resizeMode="contain"
               />

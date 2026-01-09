@@ -46,7 +46,12 @@ const transactionsTab = () => {
     deleteTransactions,
     search,
     filter
-  );
+  ).sort((a, b) => {
+    // Sort by date descending (newest first)
+    const dateA = new Date(a.dateTime.replace(" ", "T")).getTime();
+    const dateB = new Date(b.dateTime.replace(" ", "T")).getTime();
+    return dateB - dateA;
+  });
 
   const sections = groupTransactionsByDate(filteredTransactions);
 

@@ -97,7 +97,7 @@ export function TransactionItem({
         >
           {category?.imageUrl ? (
             <Image
-              source={{ uri: category.imageUrl }}
+              source={category.imageUrl}
               style={{ width: 36, height: 36 }}
               resizeMode="contain"
             />
