@@ -124,7 +124,7 @@ export default function Index() {
                 showBottomBorder={true}
               />
             )}
-            ItemSeparatorComponent={() => <View className="h-[.2px]" />}
+            // ItemSeparatorComponent={() => <View className="h-[.2px]" />}
             showsVerticalScrollIndicator={false}
           />
         </View>

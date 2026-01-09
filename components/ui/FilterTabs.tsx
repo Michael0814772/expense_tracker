@@ -33,6 +33,8 @@ const FilterTabs = ({ data, active, onChange }: Props) => {
             style={{
               backgroundColor: isActive
                 ? COLORS.icon.purple
+                : isDark
+                ? COLORS.gray[400]
                 : COLORS.text.white,
               paddingHorizontal: 15,
               paddingVertical: 10,
