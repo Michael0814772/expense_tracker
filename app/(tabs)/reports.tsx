@@ -1,3 +1,4 @@
+import Advertisement from "@/components/advert/Advertisement";
 import ReportTotal from "@/components/card/ReportTotal";
 import { TransactionItem } from "@/components/common/TransactionItem";
 import DownArrowIcon from "@/components/icons/DownArrowIcon";
@@ -119,6 +120,8 @@ const reports = () => {
                   iconBackgroundColor={COLORS.orange[500]}
                 />
               </View>
+
+              <Advertisement />
 
               <View style={{ marginBottom: 20 }}>
                 <Text
