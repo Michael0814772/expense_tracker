@@ -43,74 +43,6 @@ export default function Index() {
       }}
     >
       <View className="px-5">
-        <View className="flex-row justify-between items-center mb-6">
-          <GridIcon color={isDark ? COLORS.gray[200] : COLORS.gray[700]} />
-          {/* Home content */}
-          <Text
-            style={{
-              fontSize: 20,
-              lineHeight: 32,
-              fontWeight: "800",
-              color: isDark ? COLORS.gray[200] : COLORS.gray[700],
-            }}
-          >
-            Home
-          </Text>
-
-          <NotificationIcon
-            color={isDark ? COLORS.gray[200] : COLORS.gray[700]}
-          />
-        </View>
-
-        <BalanceCard>
-          <BalanceHeader title="Total Balance" />
-          <BalanceAmount amount={`₦${balance.toLocaleString()}`} />
-          <BalanceStatsRow
-            income={`₦ ${income.toLocaleString()}`}
-            expenses={`₦ ${expense.toLocaleString()}`}
-          />
-        </BalanceCard>
-
-        <Advertisement />
-
-        <View
-          style={{
-            marginTop: 32,
-            marginBottom: 16,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Text
-            style={{
-              color: isDark ? COLORS.gray[200] : COLORS.gray[900],
-              fontSize: 16,
-              fontWeight: "600",
-              lineHeight: 30,
-            }}
-          >
-            Transactions
-          </Text>
-          <Pressable
-            onPress={() => router.push("/transactionsTab")}
-            style={({ pressed }) => ({
-              opacity: pressed ? 0.6 : 1,
-            })}
-          >
-            <Text
-              style={{
-                color: COLORS.primary[500],
-                fontSize: 14,
-                fontWeight: "500",
-                lineHeight: 30,
-              }}
-            >
-              See all
-            </Text>
-          </Pressable>
-        </View>
-
         <View>
           <FlatList
             data={transactionData}
@@ -126,6 +58,79 @@ export default function Index() {
             )}
             // ItemSeparatorComponent={() => <View className="h-[.2px]" />}
             showsVerticalScrollIndicator={false}
+            ListHeaderComponent={
+              <>
+                <View className="flex-row justify-between items-center mb-6">
+                  <GridIcon
+                    color={isDark ? COLORS.gray[200] : COLORS.gray[700]}
+                  />
+                  {/* Home content */}
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      lineHeight: 32,
+                      fontWeight: "800",
+                      color: isDark ? COLORS.gray[200] : COLORS.gray[700],
+                    }}
+                  >
+                    Home
+                  </Text>
+
+                  <NotificationIcon
+                    color={isDark ? COLORS.gray[200] : COLORS.gray[700]}
+                  />
+                </View>
+
+                <BalanceCard>
+                  <BalanceHeader title="Total Balance" />
+                  <BalanceAmount amount={`₦${balance.toLocaleString()}`} />
+                  <BalanceStatsRow
+                    income={`₦ ${income.toLocaleString()}`}
+                    expenses={`₦ ${expense.toLocaleString()}`}
+                  />
+                </BalanceCard>
+
+                <Advertisement />
+
+                <View
+                  style={{
+                    marginTop: 32,
+                    marginBottom: 16,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: isDark ? COLORS.gray[200] : COLORS.gray[900],
+                      fontSize: 16,
+                      fontWeight: "600",
+                      lineHeight: 30,
+                    }}
+                  >
+                    Transactions
+                  </Text>
+                  <Pressable
+                    onPress={() => router.push("/transactionsTab")}
+                    style={({ pressed }) => ({
+                      opacity: pressed ? 0.6 : 1,
+                    })}
+                  >
+                    <Text
+                      style={{
+                        color: COLORS.primary[500],
+                        fontSize: 14,
+                        fontWeight: "500",
+                        lineHeight: 30,
+                      }}
+                    >
+                      See all
+                    </Text>
+                  </Pressable>
+                </View>
+              </>
+            }
           />
         </View>
       </View>
