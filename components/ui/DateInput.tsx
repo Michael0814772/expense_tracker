@@ -36,6 +36,8 @@ export function DateInput({ dateSet, dateSelected }: Props) {
             fontWeight: "700",
             minHeight: 50,
             backgroundColor: isDark ? COLORS.gray[500] : COLORS.gray[200],
+            borderWidth: 1,
+            borderColor: isDark ? COLORS.gray[700] : COLORS.gray[300],
           }}
         />
       </Pressable>
@@ -47,6 +49,7 @@ export function DateInput({ dateSet, dateSelected }: Props) {
           mode="date"
           display={Platform.OS === "ios" ? "spinner" : "default"}
           onChange={onChange}
+          // maximumDate={new Date()}
         />
       )}
     </View>

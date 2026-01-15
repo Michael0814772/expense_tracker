@@ -23,9 +23,10 @@ const ReportTotal = ({
         justifyContent: "center",
         alignContent: "center",
         backgroundColor: backgroundColor,
-        paddingHorizontal: 35,
+        paddingHorizontal: 20,
         paddingVertical: 20,
         borderRadius: 20,
+        flex: 1,
       }}
     >
       <Text

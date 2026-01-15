@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { Pressable, Text } from "react-native";
 
@@ -52,7 +53,7 @@ function GradientToggleButton({
         paddingVertical: 14,
         borderRadius: 999,
         borderWidth: 1,
-        borderColor: "#E5E7EB",
+        borderColor: COLORS.gray[400],
         alignItems: "center",
         backgroundColor: "#E5E7EB",
       }}

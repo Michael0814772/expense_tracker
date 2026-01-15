@@ -101,6 +101,7 @@ const reports = () => {
                   flexDirection: "row",
                   justifyContent: "space-between",
                   marginBottom: 25,
+                  gap: 10,
                 }}
               >
                 <ReportTotal

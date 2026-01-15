@@ -43,6 +43,8 @@ export function FormInputTab({
           paddingHorizontal: 14,
           paddingVertical: 16,
           borderRadius: 12,
+          borderWidth: 1,
+          borderColor: isDark ? COLORS.gray[600] : COLORS.gray[300],
           backgroundColor: isDark ? COLORS.gray[500] : COLORS.gray[200],
         }}
       />

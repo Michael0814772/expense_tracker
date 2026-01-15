@@ -51,7 +51,7 @@ const CategoryCard = ({
                 borderWidth: isSelected ? 2 : 2,
                 borderColor: isSelected
                   ? COLORS.primary[600] // purple
-                  : "transparent",
+                  : COLORS.gray[300],
 
                 // ight purple overlay when selected
                 backgroundColor: isSelected

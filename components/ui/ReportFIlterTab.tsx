@@ -22,6 +22,7 @@ const ReportFIlterTab = ({ data, active, onChange }: Props) => {
         justifyContent: "space-between",
         alignContent: "center",
         marginBottom: 10,
+        gap: 10,
       }}
     >
       {data
@@ -39,9 +40,12 @@ const ReportFIlterTab = ({ data, active, onChange }: Props) => {
                     ? COLORS.orange[500]
                     : COLORS.icon.purple
                   : COLORS.text.white,
-                paddingHorizontal: 60,
+                paddingHorizontal: 40,
                 paddingVertical: 8,
                 borderRadius: 20,
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Text
